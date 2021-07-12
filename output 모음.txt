@@ -1,0 +1,62 @@
+root@DESKTOP-Q3B541T:~# gcc --version
+gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0
+Copyright (C) 2019 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+root@DESKTOP-Q3B541T:~# gcc -o simplesh simplesh.c
+root@DESKTOP-Q3B541T:~# ./simplesh
+simplesh:/root$ gcc
+gcc: fatal error: no input files
+compilation terminated.
+simplesh:/root$ ls -ald /tmp
+drwxrwxrwt 2 root root 4096 May 14 14:51 /tmp
+simplesh:/root$ /usr/bin/ls -ald /tmp
+drwxrwxrwt 2 root root 4096 May 14 14:51 /tmp
+simplesh:/root$ asdf
+Failed to exec: No such file or directory
+simplesh:/root$ /asdf
+Failed to exec: No such file or directory
+simplesh:/root$ pwd
+/root
+simplesh:/root$ pwd test
+simplesh: pwd: too many arguments
+simplesh:/root$ cd /root
+simplesh: cd: /root: Permission denied
+simplesh:/root$ cd /asdf
+simplesh: cd: /asdf: No such file or directory
+simplesh:/root$ cd /tmp
+simplesh:/tmp$ cd
+simplesh: cd: no arguments
+simplesh:/tmp$ cd /tmp /usr
+simplesh: cd: too many arguments
+simplesh:/tmp$ cd ..
+simplesh:/$ pwd
+/
+simplesh:/$ exit 1 2 3
+simplesh: exit: too many arguments
+simplesh:/$ exit
+root@DESKTOP-Q3B541T:~# echo $?
+0
+root@DESKTOP-Q3B541T:~# ./simplesh
+simplesh:/root$ exit 1
+root@DESKTOP-Q3B541T:~# echo $?
+1
+root@DESKTOP-Q3B541T:~# gcc -o simplesh simplesh.c
+root@DESKTOP-Q3B541T:~# ./simplesh
+simplesh:/root$ ls -ald /tmp > out
+simplesh:/root$ cat out
+drwxrwxrwt 2 root root 4096 May 14 14:52 /tmp
+simplesh:/root$ ls -ald /tmp >> out
+simplesh:/root$ cat out
+drwxrwxrwt 2 root root 4096 May 14 14:52 /tmp
+drwxrwxrwt 2 root root 4096 May 14 14:52 /tmp
+simplesh:/root$ ls -ald /usr > out
+simplesh:/root$ cat out
+drwxr-xr-x 14 root root 4096 Aug  5  2020 /usr
+simplesh:/root$ ls -ald /usr > /root/out
+Failed to open file for stdout redirection: Permission denied
+simplesh:/root$ ls -ald /usr > /asdf/out
+Failed to open file for stdout redirection: No such file or directory
+simplesh:/root$ exit
+root@DESKTOP-Q3B541T:~#
